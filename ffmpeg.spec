@@ -4,7 +4,7 @@
 #
 Name     : ffmpeg
 Version  : n4.2.2
-Release  : 1
+Release  : 2
 URL      : https://github.com/FFmpeg/FFmpeg/archive/n4.2.2.tar.gz
 Source0  : https://github.com/FFmpeg/FFmpeg/archive/n4.2.2.tar.gz
 Summary  : No detailed summary available
@@ -130,7 +130,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1586688930
+export SOURCE_DATE_EPOCH=1586689158
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -148,7 +148,6 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 --enable-libass \
 --enable-libdav1d \
 --enable-libdrm \
---enable-libfdk-aac \
 --enable-libfdk-aac \
 --enable-libfreetype \
 --enable-libfribidi \
@@ -168,7 +167,6 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 --enable-libx264 \
 --enable-libx265 \
 --enable-nonfree \
---enable-nonfree \
 --enable-opengl \
 --enable-postproc \
 --enable-pthreads \
@@ -179,7 +177,7 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1586688930
+export SOURCE_DATE_EPOCH=1586689158
 rm -rf %{buildroot}
 %make_install
 
