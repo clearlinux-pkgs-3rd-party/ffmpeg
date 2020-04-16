@@ -4,7 +4,7 @@
 #
 Name     : ffmpeg
 Version  : n4.2.2
-Release  : 2
+Release  : 3
 URL      : https://github.com/FFmpeg/FFmpeg/archive/n4.2.2.tar.gz
 Source0  : https://github.com/FFmpeg/FFmpeg/archive/n4.2.2.tar.gz
 Summary  : No detailed summary available
@@ -16,6 +16,7 @@ Requires: ffmpeg-lib = %{version}-%{release}
 Requires: ffmpeg-man = %{version}-%{release}
 BuildRequires : SDL2-dev
 BuildRequires : alsa-lib-dev
+BuildRequires : aom-dev
 BuildRequires : appstream-glib-dev
 BuildRequires : bzip2-dev
 BuildRequires : dav1d-dev
@@ -30,6 +31,7 @@ BuildRequires : ladspa_sdk-dev
 BuildRequires : lame-dev
 BuildRequires : libXvMC-dev
 BuildRequires : libass-dev
+BuildRequires : libbluray-dev
 BuildRequires : libdrm-dev
 BuildRequires : libgcrypt-devel
 BuildRequires : libjpeg-turbo-dev
@@ -39,6 +41,7 @@ BuildRequires : libva-dev
 BuildRequires : libvorbis-dev
 BuildRequires : libvpx-dev
 BuildRequires : libwebp-dev
+BuildRequires : libxvid-dev
 BuildRequires : mediasdk-dev
 BuildRequires : mesa-dev
 BuildRequires : nasm
@@ -57,6 +60,9 @@ BuildRequires : x264-dev
 BuildRequires : x265-dev
 BuildRequires : yasm
 BuildRequires : zlib-dev
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 Patch1: 0001-configure-do-not-die-if-unknown-option-is-found.patch
 
 %description
@@ -130,11 +136,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1586689158
+export SOURCE_DATE_EPOCH=1587030923
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure --disable-static --enable-avfilter \
 --enable-avresample \
@@ -145,7 +151,9 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 --enable-gnutls \
 --enable-gpl \
 --enable-ladspa \
+--enable-libaom \
 --enable-libass \
+--enable-libbluray \
 --enable-libdav1d \
 --enable-libdrm \
 --enable-libfdk-aac \
@@ -160,16 +168,19 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 --enable-librtmp \
 --enable-libsnappy \
 --enable-libspeex \
+--enable-libtheora \
 --enable-libv4l2 \
 --enable-libvorbis \
 --enable-libvpx \
 --enable-libwebp \
 --enable-libx264 \
 --enable-libx265 \
+--enable-libxvid \
 --enable-nonfree \
 --enable-opengl \
 --enable-postproc \
 --enable-pthreads \
+--enable-sdl2 \
 --enable-shared \
 --enable-vaapi \
 --enable-version3 \
@@ -177,7 +188,7 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1586689158
+export SOURCE_DATE_EPOCH=1587030923
 rm -rf %{buildroot}
 %make_install
 

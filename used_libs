@@ -2,8 +2,10 @@ libGL.so.1
 libSDL2-2.0.so.0
 libX11.so.6
 libXv.so.1
+libaom.so.0
 libasound.so.2
 libass.so.9
+libbluray.so.2
 libbz2.so.1.0
 libc.so.6
 libdav1d.so.3
@@ -26,6 +28,8 @@ libpulse.so.0
 librtmp.so.1
 libsnappy.so.1
 libspeex.so.1
+libtheoradec.so.1
+libtheoraenc.so.1
 libv4l2.so.0
 libva-drm.so.2
 libva-x11.so.2
@@ -37,4 +41,5 @@ libwebp.so.7
 libwebpmux.so.3
 libx264.so.159
 libx265.so.188
+libxvidcore.so.4
 libz.so.1
